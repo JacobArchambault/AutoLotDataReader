@@ -10,14 +10,20 @@ namespace AutoLotDataReader
         {
             WriteLine("***** Fun with Data Readers *****\n");
 
+            // Create a connection string via the builder object.
+            var cnStringBuilder = new SqlConnectionStringBuilder
+            {
+                InitialCatalog = "AutoLot",
+                DataSource = @"(localdb)\mssqllocaldb",
+                ConnectTimeout = 30,
+                IntegratedSecurity = true
+            };
 
             // Create and open a connection.
             using (SqlConnection connection = new SqlConnection())
             {
-                connection.ConnectionString =
-                    @"Data Source=(localdb)\mssqllocaldb;Integrated Security=true;Initial Catalog=AutoLot;Connect Timeout=30";
+                connection.ConnectionString = cnStringBuilder.ConnectionString;
                 connection.Open();
-
                 ShowConnectionStatus(connection);
 
                 // Create a SQL command object.
