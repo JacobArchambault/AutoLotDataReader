@@ -36,7 +36,10 @@ namespace AutoLotDataReader
                     // Loop over the results.
                     while (myDataReader.Read())
                     {
-                        WriteLine($"-> Make: {myDataReader["Make"]}, PetName: {myDataReader["PetName"]}, Color: {myDataReader["Color"]}.");
+                        WriteLine($"***** Record *****");
+                        for (int i = 0; i < myDataReader.FieldCount; i++)
+                            WriteLine($"{myDataReader.GetName(i)} = {myDataReader.GetValue(i)}");
+                        WriteLine();
                     }
                 }
             }
