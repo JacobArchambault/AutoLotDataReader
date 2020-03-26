@@ -1,12 +1,10 @@
-﻿using System;
-using System.Data;
-using System.Data.SqlClient;
+﻿using System.Data.SqlClient;
 using static System.Console;
 namespace AutoLotDataReader
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
             WriteLine("***** Fun with Data Readers *****\n");
 
