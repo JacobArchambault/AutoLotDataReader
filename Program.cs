@@ -24,9 +24,15 @@ namespace AutoLotDataReader
                 connection.Open();
                 ShowConnectionStatus(connection);
 
-                // Create a SQL command object.
+                // Create a SQL command object with constructor arguments.
                 string sql = "Select * From Inventory";
                 SqlCommand myCommand = new SqlCommand(sql, connection);
+                // Create another command object via properties.
+                SqlCommand testCommand = new SqlCommand
+                {
+                    Connection = connection,
+                    CommandText = sql
+                };
 
                 // Obtain a data reader a la ExecuteReader().
                 using (SqlDataReader myDataReader = myCommand.ExecuteReader())
